@@ -43,9 +43,9 @@ public class TP_number1 extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        //        GreyImg(img_bp);
+              GreyImg_Pixels(img_bp);
                 // colorize(img_bp);
-                toGray(img_bp);
+               // toGray(img_bp);
                 img.setImageBitmap(img_bp);
 
             }
@@ -75,28 +75,28 @@ public class TP_number1 extends AppCompatActivity {
         }
     return bmp;
     }
-    public  void GreyImg(Bitmap img) {
+
+    public  void GreyImg_Pixels(Bitmap img) {
         int width = img.getWidth();
         int height = img.getHeight();
 
         int[] pixels = new int[width * height];
 
         img.getPixels(pixels, 0, width, 0, 0, width, height);
-        int alpha = 0xFF << 24;
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                int grey = pixels[width * i + j];
 
-                int red = ((grey & 0x00FF0000) >> 16);
-                int green = ((grey & 0x0000FF00) >> 8);
-                int blue = (grey & 0x000000FF);
+        for (int i = 0; i < height*width; i++) {
+            int grey = pixels[i];
 
-                grey = (int) ((float) red * 0.3 + (float) green * 0.59 + (float) blue * 0.11);
-                grey = alpha | (grey << 16) | (grey << 8) | grey;
-                pixels[width * i + j] = grey;
-            }
+            int red =   Color.red(grey);
+            int green = Color.green(grey);
+            int blue =  Color.blue(grey);
+
+            grey = (int) (red * 0.3 + green * 0.59 +  blue * 0.11);
+
+            pixels[i] = Color.rgb(grey,grey,grey);
+
+
         }
-        Bitmap result = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        result.setPixels(pixels, 0, width, 0, 0, width, height);
-            }
+        img.setPixels(pixels, 0, width, 0, 0, width, height);
+    }
 }
