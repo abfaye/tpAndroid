@@ -31,7 +31,6 @@ public class TP_number2 extends AppCompatActivity {
         BitmapFactory.Options o =new BitmapFactory.Options();
         o.inMutable=true;
         img_bp= BitmapFactory.decodeResource(getResources(), R.drawable.leguimes,o);
-        //img_bp= img_bp.copy(Bitmap.Config.ARGB_8888, true);
 
         text.setText("Height : "+img_bp.getHeight()+"\n Width : "+img_bp.getWidth());
 
@@ -39,38 +38,36 @@ public class TP_number2 extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //GreyImg(img_bp);
-                // colorize(img_bp);
                 colorize_Without_Red(img_bp);
                 img.setImageBitmap(img_bp);
 
             }
         });
 
-        //GreyImg(img_bp);
         img.setImageBitmap(img_bp);
     }
-    public void colorize_Without_Red(Bitmap bmp){
-        int width = bmp.getWidth();
-        int height=bmp.getHeight();
-        int a,r,g,b;
-        int color=0;
-        for(int i=0;i<width;i++){
-            for(int j=0;j<height;j++){
-                color=bmp.getPixel(i,j);
-                a = Color.alpha(color);
-                r = Color.red(color);
-                g = Color.green(color);
-                b = Color.blue(color);
-                int grv=(r+g+b)/3;
-                float[] hsv = new float[3];
-                Color.RGBToHSV(r, g, b, hsv);
-                int aleatoir=(int)Math.random()*(350 - 0);
-                color = Color.HSVToColor(grv, hsv);
-                if((hsv[0] > 20) && (hsv[0] < 340)){
-                    bmp.setPixel(i , j , Color.rgb(grv,grv,grv));
-                }
+    public void colorize_Without_Red(Bitmap img){
+        int width = img.getWidth();
+        int height = img.getHeight();
+
+        int[] pixels = new int[width * height];
+
+        img.getPixels(pixels, 0, width, 0, 0, width, height);
+
+        for(int i=0;i<width*height;i++){
+            int color=pixels[i];
+            int r = Color.red(color);
+            int g = Color.green(color);
+            int b = Color.blue(color);
+            float[] hsv = new float[3];
+            Color.RGBToHSV(r, g, b, hsv);
+            if((hsv[0] > 20) && (hsv[0] < 340)){
+                int grv=(int) (r * 0.3 + g * 0.59 +  b * 0.11);
+                pixels[i] = Color.rgb(grv,grv,grv);
             }
         }
+        img.setPixels(pixels, 0, width, 0, 0, width, height);
+
     }
 }
+
