@@ -80,11 +80,11 @@
                     android:translationX="100dp" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/id_diminuecotraste"
                     android:layout_width="152dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="Button"
+                    android:text="Contrast-"
                     android:translationX="100dp"
                     android:translationY="20dp" />
 

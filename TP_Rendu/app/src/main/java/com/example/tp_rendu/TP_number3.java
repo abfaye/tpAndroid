@@ -18,6 +18,7 @@ public class TP_number3 extends AppCompatActivity {
     private Bitmap img_bp;
     private ImageView img;
     private Button contraste1;
+    private Button diminueContraste;
 
 
     @Override
@@ -27,6 +28,7 @@ public class TP_number3 extends AppCompatActivity {
         text = (TextView)findViewById(R.id.idTaille_Tp3);
         img = (ImageView)findViewById(R.id.idIMG3);
         contraste1=(Button)findViewById(R.id.id_contrast1);
+        diminueContraste =(Button)findViewById(R.id.id_diminuecotraste);
 
         BitmapFactory.Options o =new BitmapFactory.Options();
         o.inMutable=true;
@@ -36,10 +38,19 @@ public class TP_number3 extends AppCompatActivity {
 
         text.setText("Height : "+img_bp.getHeight()+"\n Width : "+img_bp.getWidth());
 
-        contraste1.setOnClickListener(new View.OnClickListener() {
+        diminueContraste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 extensionDynamiqueGris(img_bp);
+                img.setImageBitmap(img_bp);
+
+            }
+        });
+
+        contraste1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                diminutionContrasteGris(img_bp);
                 img.setImageBitmap(img_bp);
 
             }
@@ -95,5 +106,32 @@ public class TP_number3 extends AppCompatActivity {
         im.setPixels(pixels, 0, width, 0, 0, width, height);
     }
 
+    //diminution du contraste d'une image grise
+    public void diminutionContrasteGris(Bitmap im) {
+        int[] hist = greyScale(im);
+        int width = im.getWidth();
+        int height = im.getHeight();
+        int[] LUT = new int[256];
+        int[] newLUT = new int[256];
+        int size=0;
+        for(int j=0;j<256;j++){
+            if(hist[j]>50){
+                LUT[size]=hist[j];
+                size++;
+            }
+        }
+        for(int z=0;z<size;z++){
+            newLUT[z]=LUT[z];
+        }
+        int[] pixels = new int[width * height];
+        im.getPixels(pixels, 0, width, 0, 0, width, height);
+        int i;
+        for (i = 0; i < pixels.length; i++) {
+            int grey=red(pixels[i]);
+            int newGrey=newLUT[grey];
+            pixels[i]=rgb(newGrey,newGrey,newGrey);
 
+        }
+        im.setPixels(pixels, 0, width, 0, 0, width, height);
+    }
 }
