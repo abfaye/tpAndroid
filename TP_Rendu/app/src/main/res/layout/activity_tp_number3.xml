@@ -86,16 +86,27 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:text="Contrast-"
                     android:translationX="100dp"
-                    android:translationY="20dp" />
+                    android:translationY="10dp" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/id_rgbcontrast"
                     android:layout_width="152dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="Button"
+                    android:text="ContrasRGB+"
                     android:translationX="100dp"
-                    android:translationY="40dp" />
+                    android:translationY="15dp" />
+
+                <Button
+                    android:id="@+id/idHisto"
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content"
+                    android:text="HistPar="
+                    android:textSize="18sp"
+                    android:transformPivotX="100dp"
+                    android:transformPivotY="30dp"
+                    android:translationX="100dp"
+                    android:translationY="22dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -109,7 +120,7 @@
             <ImageView
                 android:id="@+id/idIMG3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="212dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/leguimes" />
