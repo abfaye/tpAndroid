@@ -22,7 +22,7 @@ public class TP_number2 extends AppCompatActivity {
         setContentView(R.layout.activity_tp_number2);
         img = (ImageView)findViewById(R.id.idImagetp2);
         button2=(Button)findViewById(R.id.id_button2tp2);
-        text=(TextView)findViewById(R.id.idTaille_Tp1);
+        text=(TextView)findViewById(R.id.idTaille_Tp3);
         /**
          * Utilisation de BitmapFactory.Option permet de creer une option
          *

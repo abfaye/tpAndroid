@@ -14,6 +14,7 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
     private Button button1;
     private Button button2;
+    private Button button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button1=(Button)findViewById(R.id.id_button1tp1);
         button2=(Button)findViewById(R.id.id_button2);
+        button3=(Button)findViewById(R.id.id_button3);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +39,16 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(),"bouton a reagie",Toast.LENGTH_LONG)
                 //.show();
                 Intent myIntent = new Intent(MainActivity.this,TP_number2.class);
+                startActivity(myIntent);
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getApplicationContext(),"bouton a reagie",Toast.LENGTH_LONG)
+                //.show();
+                Intent myIntent = new Intent(MainActivity.this,TP_number3.class);
                 startActivity(myIntent);
             }
         });

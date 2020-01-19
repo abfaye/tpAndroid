@@ -44,8 +44,6 @@ public class TP_number1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               GreyImg_Pixels(img_bp);
-                // colorize(img_bp);
-               // toGray(img_bp);
                 img.setImageBitmap(img_bp);
 
             }
